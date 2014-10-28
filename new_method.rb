@@ -18,16 +18,19 @@ class Array
     end
     
     def my_select
-        new_arr = []
+        new_arr = Array.new
          self.my_each{|n|
-            if yield(self[n])
-                new_arr << self[n]
+            if yield(n)
+                new_arr << n
             end
          }
          new_arr
     end
+
+    def my_all?
+        self == self.my_select{|x| yield(x)}
+    end
     
 end
 
-[1,2,4,3,5,2].my_select{|x| x%2 != 0}
-
+[1,2,3,4,5,6,7].my_all?{|x| x>0}
