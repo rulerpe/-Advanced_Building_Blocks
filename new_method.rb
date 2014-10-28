@@ -36,7 +36,23 @@ class Array
         new_arr == self.my_select{|x| yield(x)}
     end
     
+    def my_count(x="c")
+        count = 0
+        self.my_select{|n|
+            if block_given?
+                count += 1 if yield(n)
+            elsif x !="c"
+                count += 1 if n==x
+            else
+                count = self.length
+            end
+        } 
+        count
+    end
+    
 end
 
-[1,2,3,4,5,6,7].my_none?{|x| x<5}
+
+[1,2,4,5,8,9,0].my_count{|x| x<4}
+
 
