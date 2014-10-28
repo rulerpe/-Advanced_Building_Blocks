@@ -50,9 +50,17 @@ class Array
         count
     end
     
+    def my_map
+       new_arr = Array.new
+       self.my_each {|n|
+          new_arr << yield(n) 
+        }
+       new_arr
+    end
+    
 end
 
 
-[1,2,4,5,8,9,0].my_count{|x| x<4}
+[[1,2],[4,5],[8,9,0]].my_map{|x| x+[100]}
 
 
