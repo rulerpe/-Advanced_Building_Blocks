@@ -27,10 +27,16 @@ class Array
          new_arr
     end
 
-    def my_all?
+    def my_all?        
         self == self.my_select{|x| yield(x)}
+    end
+    
+    def my_none?       
+        new_arr = Array.new 
+        new_arr == self.my_select{|x| yield(x)}
     end
     
 end
 
-[1,2,3,4,5,6,7].my_all?{|x| x>0}
+[1,2,3,4,5,6,7].my_none?{|x| x<5}
+
