@@ -86,7 +86,6 @@ class Array
     
 end
 
+long_word = Proc.new{|memo,word| memo.length>word.length ? memo : word}
 
-longest = %w{ cat sheep bear }.inject { |memo, word|
-   memo.length > word.length ? memo : word
-}
+longest = %w{ cat sheep bear }.inject(&long_word)
