@@ -58,9 +58,35 @@ class Array
        new_arr
     end
     
+    def my_inject(x=0, y="none")
+        result = x
+        self.my_each {|x|
+            if block_given?
+                result = yield(result,x)
+            else
+                case y
+                when :+
+                    result +=x
+                when :*
+                    result *=x
+                when :-
+                    result -=x
+                when :/
+                    result /=x
+                when :%
+                    result %=x
+                else
+                    result
+                end
+            end
+            }
+        result
+        
+    end
+    
 end
 
 
-[[1,2],[4,5],[8,9,0]].my_map{|x| x+[100]}
-
-
+longest = %w{ cat sheep bear }.inject { |memo, word|
+   memo.length > word.length ? memo : word
+}
