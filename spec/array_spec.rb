@@ -37,4 +37,28 @@ describe Array do
 		end
 	end
 
+	describe '#my_all?' do
+		it "ture if all the same" do
+			all = @test_array.my_all? do |x|
+				x == 'apple'
+			end
+			expect(all).to eql(false)
+		end
+	end
+
+	describe '#my_count' do
+		it 'how many words in the array' do
+			expect(@test_array.my_count("apple")).to eql(1) 
+		end
+	end
+
+	describe '#my_map' do
+		it 'colloct words' do
+			arr = @test_array.my_map do |x|
+				x.length <= 3
+			end
+			expect(arr).to eql(['how','our'])
+		end
+	end
+
 end

@@ -52,9 +52,11 @@ class Array
     
     def my_map
        new_arr = Array.new
-       self.my_each {|n|
-          new_arr << yield(n) 
-        }
+       self.my_each do|n|
+            if yield(n)
+                new_arr << n
+            end
+        end
        new_arr
     end
     
